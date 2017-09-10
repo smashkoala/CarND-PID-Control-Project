@@ -33,9 +33,9 @@ int main()
   uWS::Hub h;
 
   PID pid;
-  pid.Init(0.3, 0.2, 0.4);
+  pid.Init(0.2, 0.000001, 2.0);
   PID pid_s;
-  pid_s.Init(0.3, 0.2, 0.4);
+  pid_s.Init(0.4, 0.0001, 0.1);
   // TODO: Initialize the pid variable.
 
   h.onMessage([&pid, &pid_s](uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length, uWS::OpCode opCode) {
@@ -54,6 +54,7 @@ int main()
           double speed = std::stod(j[1]["speed"].get<std::string>());
           double angle = std::stod(j[1]["steering_angle"].get<std::string>());
           double steer_value, throttle, throttle_s;
+          double target_speed = 30;
           /*
           * TODO: Calcuate steering value here, remember the steering value is
           * [-1, 1].
@@ -61,23 +62,25 @@ int main()
           * another PID controller to control the speed!
           */
           pid.UpdateError(cte);
-          pid_s.UpdateError(cte);
+          pid_s.UpdateError(speed - target_speed);
   
 //          throttle_s = - pid_s.Kp*pid.p_error - pid_s.Kd*pid_s.d_error - pid_s.Ki*pid_s.i_error;
-          std::cout << "throttle_s" << throttle_s << std::endl;
-          steer_value = - pid.Kp*pid.p_error - pid.Kd*pid.d_error;
- //         steer_value = - pid.Kp*cte - pid.Kd*(cte - pid.previousCte) - pid.Ki*pid.TotalError();
-          
+//          std::cout << "throttle_s" << throttle_s << std::endl;
+          steer_value = pid.TotalError();
+          throttle = pid_s.TotalError();
+//          steer_value = - pid.Kp*cte - pid.Kd*(cte - pid.previousCte) - pid.Ki*pid.TotalError();
+//          steer_value =  - pid.Kp*pid.p_error - pid.Kd*pid.d_error - pid.Ki*pid.i_error;
+//          steer_value = -pid.Kp*pid.p_error;
 //          steer_value = steer_value;
           // DEBUG
           std::cout << "CTE: " << cte << " Steering Value: " << steer_value << std::endl;
 
-          if(speed < 20 && speed > 0) {
-            throttle = 0.3;
-//            throttle -= throttle_s;
-          }else {
-            throttle = 0.1;
-          }
+//          if(speed < 20 && speed > 0) {
+//            throttle = 0.1;
+////            throttle -= throttle_s;
+//          }else {
+//            throttle = 0.05;
+//          }
           
           json msgJson;
           msgJson["steering_angle"] = steer_value;
