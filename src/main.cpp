@@ -54,7 +54,7 @@ int main()
           double speed = std::stod(j[1]["speed"].get<std::string>());
           double angle = std::stod(j[1]["steering_angle"].get<std::string>());
           double steer_value, throttle, throttle_s;
-          double target_speed = 30;
+          double target_speed = 40;
           /*
           * TODO: Calcuate steering value here, remember the steering value is
           * [-1, 1].
