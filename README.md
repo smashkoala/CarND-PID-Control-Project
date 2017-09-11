@@ -12,7 +12,7 @@ The PID controller is also implemented for throttle control too.
 
 3. Describe the effect each of the P, I, D components had in your implementation.   
 [This](https://github.com/smashkoala/CarND-PID-Control-Project/blob/master/OK_param.mov) is the video of successful run with 40 mph. The parameters are set P = 0.3, I = 0.000001 and D = 3.0.  
-The P component influences on the magnitude of the turning angle. If it is higher, the steering angle gets steeper.  See [this video](https://github.com/smashkoala/CarND-PID-Control-Project/blob/master/P_param.mov). Only P is changed to P = 0.8. The rest of the parameters stay the same as successful run vide.  
+The P component influences on the magnitude of the turning angle. If it is higher, the steering angle gets steeper.  See [this video](https://github.com/smashkoala/CarND-PID-Control-Project/blob/master/P_param.mov). Only P is changed to P = 0.8. The rest of the parameters stay the same as successful run.  
 The I component compensates for bias. In this project, it compensates for steering angle bias. If it is large, it oversteers from the begging of the drive. Therefor,it needs to be a very small number. See [this video](https://github.com/smashkoala/CarND-PID-Control-Project/blob/master/I_param.mov). Only I is changed to I = 0.1.  
 The D component influences on the oscillation of the car. If it is higher, the oscillation of the vehicle gets less. See [this video](https://github.com/smashkoala/CarND-PID-Control-Project/blob/master/D_param.mov). Only D is changed to 0.1.
 
@@ -26,7 +26,7 @@ the vehicle does not run straight from the begging. Then I set it to very small
 value, which is 0.000001. It seems that this compensate some steering biases.
 
 5. The vehicle must successfully drive a lap around the track.  
-Yes, the vehicle drive successfully drive a lap with the speed of 40 miles/hour.
+Yes, the vehicle successfully drives a lap with the speed of 40 miles/hour.
 
 ---
 
