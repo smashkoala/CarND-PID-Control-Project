@@ -45,9 +45,6 @@ public:
   */
   double TotalError();
   
-private:
-  double totalError;
-  
 };
 
 #endif /* PID_H */

@@ -1,5 +1,39 @@
 # CarND-Controls-PID
-Self-Driving Car Engineer Nanodegree Program
+Self-Driving Car Engineer Nanodegree Program - Writeup and instructions
+
+## Rubric points
+
+1. Your code should compile
+See this repository in GitHub.
+
+2. The PID procedure follows what was taught in the lessons.
+It is implemented as taught in the lesson.
+The PID controller is also implemented for throttle control too.
+
+3. Describe the effect each of the P, I, D components had in your implementation.
+The P component influences on the magnitude of the turning angle. If it is higher,
+the steering angle gets steeper.
+
+The I component compensates for bias. In this project, it compensates for steering angle bias. If it is large, it oversteers from the begging of the drive.
+Therefor,it needs to be a small number.
+
+The D component influences on the oscillation of the car. If it is higher, the oscillation of the vehicle gets less.
+
+4. Describe how the final hyperparameters were chosen.
+First, I tried to run the vehicle by setting both I and D = 0. For this, I set
+the target speed of vehicle less than 20 miles/hour, since if the speed is higher,
+the vehicle oscillate more often.
+Once, the vehicle can finish one lap of the course, I increased the speed up to
+40 miles/hour. The vehicle oscillates more often with this speed. In order to
+reduce the oscillation, I chose the D component, which is 3.0 used in the lesson, and kept the I component still 0. I changed the D several times to set it between
+2.0 and 4.0, but in the end 3.0 was the best fit by looking at the behavior of
+vehicle.
+Lastly, I set the I component to 0.1, and I realized that with this setting,
+the vehicle does not run straight from the begging. Then I set it to very small
+value, which is 0.000001. It seems that this compensate some steering biases.
+
+5. The vehicle must successfully drive a lap around the track.
+Yes, the vehicle drive successfully drive a lap with the speed of 40 miles/hour.
 
 ---
 
@@ -19,7 +53,7 @@ Self-Driving Car Engineer Nanodegree Program
   * Run either `./install-mac.sh` or `./install-ubuntu.sh`.
   * If you install from source, checkout to commit `e94b6e1`, i.e.
     ```
-    git clone https://github.com/uWebSockets/uWebSockets 
+    git clone https://github.com/uWebSockets/uWebSockets
     cd uWebSockets
     git checkout e94b6e1
     ```
@@ -33,7 +67,7 @@ There's an experimental patch for windows in this [PR](https://github.com/udacit
 1. Clone this repo.
 2. Make a build directory: `mkdir build && cd build`
 3. Compile: `cmake .. && make`
-4. Run it: `./pid`. 
+4. Run it: `./pid`.
 
 ## Editor Settings
 
@@ -93,4 +127,3 @@ still be compilable with cmake and make./
 
 ## How to write a README
 A well written README file can enhance your project and portfolio.  Develop your abilities to create professional README files by completing [this free course](https://www.udacity.com/course/writing-readmes--ud777).
-
