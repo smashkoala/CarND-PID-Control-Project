@@ -14,11 +14,11 @@ The PID controller is also implemented for the throttle control too.
 [This](https://github.com/smashkoala/CarND-PID-Control-Project/blob/master/OK_param.mov) is the video of successful run with 40 mph. The parameters are set P = 0.3, I = 0.000001 and D = 3.0.  
 The P component influences on the magnitude of the turning angle. If it is higher, the steering angle gets steeper.  See [this video](https://github.com/smashkoala/CarND-PID-Control-Project/blob/master/P_param.mov). Only P is changed to P = 0.8. The rest of the parameters stay the same as the successful run.  
 The I component compensates for biases. In this project, it compensates for the steering angle bias. If it is large, it oversteers from the begging of the drive. Therefor,it needs to be a very small number. See [this video](https://github.com/smashkoala/CarND-PID-Control-Project/blob/master/I_param.mov). Only I is changed to I = 0.1.  
-The D component influences on the oscillation of the car. If it is higher, the oscillation of the vehicle gets less. See [this video](https://github.com/smashkoala/CarND-PID-Control-Project/blob/master/D_param.mov). Only D is changed to 0.1.
+The D component influences on the oscillation of the car. If it is higher, the oscillation of the vehicle gets less. See [this video](https://github.com/smashkoala/CarND-PID-Control-Project/blob/master/D_param.mov). Only D is changed to 0.1.  
 
-4. Describe how the final hyperparameters were chosen.
+4. Describe how the final hyperparameters were chosen.  
 First, I tried to run the vehicle by setting both I and D = 0.0. For this, I set
-the target speed of vehicle less than 20 mph, since if the speed is higher,the vehicle oscillate more often. Once, the vehicle can finish one lap of the course, I increased the speed up to 40 mph. The vehicle oscillates more often with this speed. In order to reduce the oscillations, I chose the D component, which is 3.0 used in the lesson, and kept the I component still 0.0. I changed the D several times to set it between
+the target speed of vehicle less than 20 mph, since if the speed is higher,the vehicle oscillates more often. Once, the vehicle can finish one lap of the course, I increased the speed up to 40 mph. The vehicle oscillates more often with this speed. In order to reduce the oscillations, I chose the D component, which is 3.0 used in the lesson, and kept the I component still 0.0. I changed the D several times to set it between
 2.0 and 4.0, but in the end 3.0 was the best fit by looking at the behavior of
 vehicle.
 Lastly, I set the I component to 0.1, and I realized that with this setting,
