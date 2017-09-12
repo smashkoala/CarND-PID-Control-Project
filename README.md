@@ -18,12 +18,12 @@ The D component influences on the oscillation of the car. If it is higher, the o
 
 4. Describe how the final hyperparameters were chosen.  
 First, I tried to run the vehicle by setting both I and D = 0.0. For this, I set
-the target speed of vehicle less than 20 mph, since if the speed is higher,the vehicle oscillates more often. Once, the vehicle can finish one lap of the course, I increased the speed up to 40 mph. The vehicle oscillates more often with this speed. In order to reduce the oscillations, I chose the D component, which is 3.0 used in the lesson, and kept the I component still 0.0. I changed the D several times to set it between
+the target speed of vehicle less than 20 mph, since if the speed is higher,the vehicle oscillates more often. Once, the vehicle can finish one lap of the course with the P component = 0.3, I increased the speed up to 40 mph. The vehicle oscillates more often with this speed. In order to reduce the oscillations, I chose the D component, which is 3.0 used in the lesson, and kept the P component 0.3 and the I component still 0.0. I changed the D several times to set it between
 2.0 and 4.0, but in the end 3.0 was the best fit by looking at the behavior of
 vehicle.
 Lastly, I set the I component to 0.1, and I realized that with this setting,
 the vehicle does not run straight from the begging. Then I set it to very small
-value, which is 0.000001. It seems that this compensate some steering biases.
+value, which is 0.000001. It seems that this compensates some steering biases.
 
 5. The vehicle must successfully drive a lap around the track.  
 Yes, the vehicle successfully drives a lap with the speed of 40 mph.
